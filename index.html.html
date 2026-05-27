@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Nomad Life Audit · Rialee Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Loading Jost as a free, close visual match for Futura.
+     For real Futura, replace this line with your Adobe Fonts kit:
+     <link rel="stylesheet" href="https://use.typekit.net/YOUR_KIT_ID.css" />
+     Then update the --font-display and --font-body variables below to "futura-pt" -->
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4ede2;
+    --bg-deep: #ebe1d1;
+    --ink: #1a1814;
+    --ink-soft: #4a4640;
+    --accent: #ff6b57;
+    --accent-deep: #d94a37;
+    --moss: #4a5d3a;
+    --paper: #fbf7ef;
+    --line: #2a2620;
+    --shadow: rgba(26, 24, 20, 0.08);
+    --font-display: 'Futura', 'futura-pt', 'Jost', sans-serif;
+    --font-body: 'Futura', 'futura-pt', 'Jost', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255, 107, 87, 0.07) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(74, 93, 58, 0.05) 0%, transparent 40%);
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  /* ============ HEADER ============ */
+  .header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .brand em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-meta {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ============ INTRO SCREEN ============ */
+  .intro {
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .intro h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(42px, 6.5vw, 70px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+  }
+
+  .intro h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .intro-lede {
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 560px;
+    font-weight: 400;
+  }
+
+  .intro-meta {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 48px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(26, 24, 20, 0.15);
+    border-bottom: 1px solid rgba(26, 24, 20, 0.15);
+  }
+
+  .intro-meta-item {
+    flex: 1;
+  }
+
+  .intro-meta-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .intro-meta-value {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .pillars-preview {
+    margin-bottom: 48px;
+  }
+
+  .pillars-preview-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .pillars-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pillar-chip {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    padding: 8px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .start-btn, .nav-btn, .submit-btn {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 36px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .start-btn:hover, .nav-btn:hover, .submit-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .start-btn .arrow, .nav-btn .arrow, .submit-btn .arrow {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  /* ============ QUIZ SCREEN ============ */
+  .quiz {
+    display: none;
+    animation: fadeUp 0.5s ease-out;
+  }
+
+  .quiz.active {
+    display: block;
+  }
+
+  .progress {
+    margin-bottom: 48px;
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+
+  .progress-pillar {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .progress-count {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .progress-bar {
+    height: 2px;
+    background: rgba(26, 24, 20, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--accent);
+    transition: width 0.5s cubic-bezier(0.6, 0.05, 0.2, 1);
+    width: 0%;
+  }
+
+  .question {
+    margin-bottom: 40px;
+  }
+
+  .question-number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .question-text {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    padding: 18px 24px;
+    border: 1px solid rgba(26, 24, 20, 0.2);
+    background: var(--paper);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-body);
+    font-size: 15px;
+    text-align: left;
+    color: var(--ink);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .option:hover {
+    border-color: var(--ink);
+    transform: translateX(4px);
+  }
+
+  .option.selected {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .option-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .option.selected .option-marker::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* Scale (1-10) */
+  .scale {
+    margin-top: 8px;
+  }
+
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .scale-buttons {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+  }
+
+  .scale-btn {
+    aspect-ratio: 1;
+    border: 1px solid rgba(26, 24, 20, 0.2);
+    background: var(--paper);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--ink);
+  }
+
+  .scale-btn:hover {
+    border-color: var(--ink);
+  }
+
+  .scale-btn.selected {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(26, 24, 20, 0.15);
+  }
+
+  .back-btn {
+    font-family: var(--font-body);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+  }
+
+  .back-btn:hover {
+    color: var(--ink);
+  }
+
+  .back-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* ============ EMAIL CAPTURE ============ */
+  .capture {
+    display: none;
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  .capture.active {
+    display: block;
+  }
+
+  .capture h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(34px, 4.5vw, 50px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+
+  .capture h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .capture p {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 540px;
+  }
+
+  .capture-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+  }
+
+  .capture-form input {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid rgba(26, 24, 20, 0.25);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .capture-form input:focus {
+    border-color: var(--ink);
+  }
+
+  .capture-form input::placeholder {
+    color: rgba(26, 24, 20, 0.4);
+  }
+
+  .capture-meta {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  /* ============ RESULT SCREEN ============ */
+  .result {
+    display: none;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .result.active {
+    display: block;
+  }
+
+  .result-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .result-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .archetype-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 76px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .archetype-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .archetype-tagline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-bottom: 56px;
+    max-width: 560px;
+    font-weight: 400;
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: rgba(26, 24, 20, 0.15);
+    margin-bottom: 56px;
+    border: 1px solid rgba(26, 24, 20, 0.15);
+  }
+
+  .score-cell {
+    background: var(--paper);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .score-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .score-value {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .score-value .denom {
+    font-size: 16px;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .score-bar {
+    height: 3px;
+    background: rgba(26, 24, 20, 0.1);
+    margin-top: 12px;
+    position: relative;
+  }
+
+  .score-bar-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--accent);
+  }
+
+  .diagnosis {
+    margin-bottom: 56px;
+  }
+
+  .diagnosis h3 {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(26, 24, 20, 0.15);
+  }
+
+  .diagnosis p {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  .priorities {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+
+  .priorities h3 {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .priority-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(251, 247, 239, 0.15);
+  }
+
+  .priority-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .priority-item:first-child {
+    padding-top: 0;
+  }
+
+  .priority-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .priority-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .priority-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(251, 247, 239, 0.8);
+  }
+
+  .closing {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 32px 0;
+    border-top: 1px solid rgba(26, 24, 20, 0.15);
+    margin-top: 40px;
+  }
+
+  .closing-signature {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+    margin-top: 16px;
+    font-weight: 500;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px 60px; }
+    .intro-meta { flex-direction: column; gap: 20px; }
+    .scale-buttons { gap: 3px; }
+    .scale-btn { font-size: 13px; }
+    .priorities { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="brand">Digital Nomad <em>Fitness</em></div>
+    <div class="header-meta">3 min only</div>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro" id="intro">
+    <div class="eyebrow">What type of fit nomad are you?</div>
+    <h1>Find the <em>one thing</em><br />taking from your consistency on the road.</h1>
+    <p class="intro-lede">
+      18 questions. You'll get your archetype, your scores, and the first thing to fix.
+    </p>
+
+    <div class="intro-meta">
+      <div class="intro-meta-item">
+        <div class="intro-meta-label">Time</div>
+        <div class="intro-meta-value">3 minutes</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-label">Questions</div>
+        <div class="intro-meta-value">18 total</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-label">Result</div>
+        <div class="intro-meta-value">Your archetype</div>
+      </div>
+    </div>
+
+    <div class="pillars-preview">
+      <div class="pillars-preview-label">What we'll measure</div>
+      <div class="pillars-list">
+        <span class="pillar-chip">Steps</span>
+        <span class="pillar-chip">Sleep</span>
+        <span class="pillar-chip">Protein</span>
+        <span class="pillar-chip">Water</span>
+        <span class="pillar-chip">Movement</span>
+      </div>
+    </div>
+
+    <button class="start-btn" onclick="startQuiz()">
+      Begin the Audit <span class="arrow">→</span>
+    </button>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="quiz" id="quiz">
+    <div class="progress">
+      <div class="progress-meta">
+        <div class="progress-pillar" id="progressPillar">Steps</div>
+        <div class="progress-count" id="progressCount">01 / 18</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="question-number" id="questionNumber">Question 01</div>
+      <div class="question-text" id="questionText"></div>
+      <div id="answerArea"></div>
+    </div>
+
+    <div class="quiz-nav">
+      <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
+      <button class="nav-btn" id="nextBtn" onclick="goNext()" style="opacity: 0.4; pointer-events: none;">
+        Next <span class="arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ EMAIL CAPTURE ============ -->
+  <section class="capture" id="capture">
+    <div class="eyebrow">Almost There</div>
+    <h2>Where should I send your <em>results?</em></h2>
+    <p>Your archetype, your scores across the five nonnegotiables, and the first thing to fix this week — delivered to your inbox in the next 60 seconds.</p>
+
+    <div class="capture-form">
+      <input type="text" id="firstName" placeholder="First name" />
+      <input type="email" id="email" placeholder="Email address" />
+      <button class="submit-btn" onclick="submitCapture()">
+        Show My Results <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <p class="capture-meta">No spam. Just your audit + occasional notes on nomad fitness. Unsubscribe anytime.</p>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section class="result" id="result">
+    <div class="result-eyebrow">Your Archetype</div>
+    <h1 class="archetype-name" id="archetypeName"></h1>
+    <p class="archetype-tagline" id="archetypeTagline"></p>
+
+    <div class="scores-grid" id="scoresGrid"></div>
+
+    <div class="diagnosis">
+      <h3>The Diagnosis</h3>
+      <div id="diagnosisText"></div>
+    </div>
+
+    <div class="priorities">
+      <h3>Your First Three Moves</h3>
+      <div id="prioritiesList"></div>
+    </div>
+
+    <div class="closing" id="closingText"></div>
+    <div class="closing-signature">— Rialee</div>
+  </section>
+
+</div>
+
+<script>
+  // ============ QUIZ DATA ============
+  const questions = [
+    // STEPS
+    { pillar: 'Steps', text: "Open your health app right now — what's your average steps for the last 7 days? (No cheating!)", type: 'choice', options: [
+      { label: 'Under 5,000', score: 2 },
+      { label: '5,000 – 7,000', score: 5 },
+      { label: '7,000 – 10,000', score: 8 },
+      { label: '10,000+', score: 10 }
+    ]},
+    { pillar: 'Steps', text: "How often do you leave your accommodation in a typical week?", type: 'choice', options: [
+      { label: 'Almost never', score: 1 },
+      { label: '1 day a week', score: 3 },
+      { label: '2–3 times a week', score: 6 },
+      { label: '4–5 times a week', score: 8 },
+      { label: '6–7 days a week', score: 10 }
+    ]},
+    { pillar: 'Steps', text: "Do you have fun social activities that involve movement (cycling, pickleball, hiking, run clubs) that you do regularly and maintain from country to country? This does not include weight lifting sessions — only fun social sports.", type: 'choice', options: [
+      { label: 'Never', score: 1 },
+      { label: '1–2 times a week', score: 5 },
+      { label: '3–4 times a week', score: 8 },
+      { label: '4+ times a week', score: 10 }
+    ]},
+
+    // SLEEP
+    { pillar: 'Sleep', text: "How many hours of sleep do you average? (Not counting red-eyes.)", type: 'choice', options: [
+      { label: 'Under 6 hours', score: 2 },
+      { label: '6 – 7 hours', score: 5 },
+      { label: '7 – 8 hours', score: 9 },
+      { label: '8+ hours', score: 10 }
+    ]},
+    { pillar: 'Sleep', text: "How disrupted has your sleep been the past 4 weeks?", type: 'scale', leftLabel: 'Wrecked', rightLabel: 'Barely affected' },
+    { pillar: 'Sleep', text: "Do you have a wind-down routine that travels with you?", type: 'choice', options: [
+      { label: 'No', score: 2 },
+      { label: 'Sometimes', score: 5 },
+      { label: 'Yes', score: 10 }
+    ]},
+
+    // PROTEIN
+    { pillar: 'Protein', text: "Do you know roughly how much protein you eat in a day?", type: 'choice', options: [
+      { label: 'No idea', score: 2 },
+      { label: 'Rough guess', score: 5 },
+      { label: 'Yes, I have a number', score: 10 }
+    ]},
+    { pillar: 'Protein', text: "How often do you build a meal around a protein source instead of defaulting to carbs?", type: 'scale', leftLabel: 'Never', rightLabel: 'Always' },
+    { pillar: 'Protein', text: "When eating out in a new country, how confident are you that you know how to find protein-aligned options?", type: 'scale', leftLabel: 'Lost', rightLabel: 'Confident' },
+
+    // WATER
+    { pillar: 'Water', text: "How much water do you drink on a typical day?", type: 'choice', options: [
+      { label: 'Under 1L (about 32oz)', score: 2 },
+      { label: '1 – 2L (32 – 64oz)', score: 5 },
+      { label: '2 – 3L (64 – 96oz)', score: 9 },
+      { label: '3L+ (96oz+)', score: 10 }
+    ]},
+    { pillar: 'Water', text: "I get it — drinking is social and fun :) but are you drinking water with every glass of alcohol?", type: 'choice', options: [
+      { label: 'Yes', score: 10 },
+      { label: 'I try to but then forget', score: 5 },
+      { label: 'Never', score: 1 }
+    ]},
+    { pillar: 'Water', text: "Do you carry a refillable bottle and have a system for refilling it on the move?", type: 'choice', options: [
+      { label: 'No', score: 2 },
+      { label: 'Sometimes', score: 5 },
+      { label: 'Yes', score: 10 }
+    ]},
+
+    // MOVEMENT
+    { pillar: 'Movement', text: "How many intentional workouts do you complete in a typical week? This can be any form of intentional movement.", type: 'choice', options: [
+      { label: '0', score: 1 },
+      { label: '1 – 2', score: 4 },
+      { label: '3 – 4', score: 8 },
+      { label: '5+', score: 10 }
+    ]},
+    { pillar: 'Movement', text: "When you don't have gym access, how would you rate your confidence in training effectively?", type: 'scale', leftLabel: 'Lost', rightLabel: 'Confident' },
+    { pillar: 'Movement', text: "How often does a location change derail your training for a week or more?", type: 'choice', options: [
+      { label: 'Never', score: 10 },
+      { label: 'Sometimes', score: 5 },
+      { label: 'Always', score: 1 }
+    ]},
+
+    // QUALIFIERS
+    { pillar: 'About You', text: "How many months per year are you traveling?", type: 'choice', qualifier: 'travel', options: [
+      { label: 'Under 3 months', score: 0, value: 'under_3' },
+      { label: '3 – 6 months', score: 0, value: '3_6' },
+      { label: '6 – 9 months', score: 0, value: '6_9' },
+      { label: '9+ months', score: 0, value: '9_plus' }
+    ]},
+    { pillar: 'About You', text: "Have you worked with a coach before?", type: 'choice', qualifier: 'coach', options: [
+      { label: 'Never', score: 0, value: 'never' },
+      { label: 'In the past', score: 0, value: 'past' },
+      { label: 'Currently', score: 0, value: 'current' }
+    ]},
+    { pillar: 'About You', text: "What would it be worth to you to crack an unbreakable fitness routine while traveling in 12 weeks?", type: 'choice', qualifier: 'value', options: [
+      { label: 'It would change my life', score: 0, value: 'life_changing' },
+      { label: "It would be huge", score: 0, value: 'huge' },
+      { label: 'It would be nice', score: 0, value: 'nice' },
+      { label: "Not sure yet", score: 0, value: 'unsure' }
+    ]}
+  ];
+
+  // ============ ARCHETYPES ============
+  const archetypes = {
+    underFueled: {
+      name: 'The Under-Fueled <em>Traveler</em>',
+      tagline: "You're running on café food, intermittent caffeine, and whatever's nearby — and your energy is paying the bill.",
+      diagnosis: [
+        "Your protein and water scores are sitting where most digital nomads' do: low, and almost invisible. You've normalized not having energy. The crash at 3pm, the workouts that slowly stop by week two in a new city, and you're waiting for the day that you finally feel recovered.",
+        "The good news: this is the most fixable of the five pillars. Nutrition is a system, and once you find what works for you, it becomes easier. Once you know what to look for in a grocery store or on a menu (in any language) and you have one repeatable protein anchor, the rest follows. Suddenly you have more energy for exploring, your workouts feel easier, and you finally feel caught up on sleep."
+      ],
+      priorities: [
+        { title: 'Set a protein minimum', desc: 'One single number, not a range. Hit it daily before you worry about anything else nutrition-related.' },
+        { title: 'Build one travel-proof, high-protein breakfast', desc: 'Something you can recreate in any country with three ingredients. Example: a yogurt bowl or sweet potato hash.' },
+        { title: 'Pair water with every coffee and every drink', desc: 'I can tell you to drink more water… but you probably already know that and still don\'t do it. Instead, pair it with something you already drink. Coffee + glass of water. Cocktail + glass of water. Other tips: use a straw, or put it in a fun cup.' }
+      ]
+    },
+    inconsistent: {
+      name: 'The Inconsistent <em>Mover</em>',
+      tagline: "You train hard in one location and don't the next. This is a system problem.",
+      diagnosis: [
+        "Your movement and steps scores tell a story: you know how to train, you just lose it every time your environment changes. You can go from 4 weekly sessions to zero almost overnight.",
+        "Your fitness routine was built for one environment and you're trying to bring it around the world (and spoiler alert: it's not working). The fix is to build a worst-case-scenario routine. For example: a pre-written 30-minute bodyweight workout. Stop trying to be perfect — aim for consistent."
+      ],
+      priorities: [
+        { title: 'Define your floor, not your ceiling', desc: 'What\'s the minimum workout you\'ll do on your worst travel day? Make it small enough that you\'d be embarrassed to skip it.' },
+        { title: 'Build a no-gym version of every session', desc: 'For each workout in your week, you need a hotel-room equivalent.' },
+        { title: 'Anchor one weekly session to a fixed day', desc: 'Not "Monday." A day relative to your travel — e.g. "first morning in a new city, always a workout." We don\'t have routines on the road, so don\'t link a habit to one.' }
+      ]
+    },
+    wired: {
+      name: 'The Wired <em>and Tired</em>',
+      tagline: "You look like you're crushing it — but on the inside, your nervous system is filing for divorce.",
+      diagnosis: [
+        "Your sleep score is in the gutter. Everything else might look fine from the outside (getting in your workouts and steps, etc.), but your battery is empty. The classic high-performing nomad pattern: caffeine in, screens stay on late, and your body has not been recovered in months.",
+        "You can't out-train or out-eat bad sleep. If you are not sleeping, your other healthy habits will become 50% less effective. And sooner or later, your body will make you rest — usually by making you very sick so you finally just sit down for a hot sec."
+      ],
+      priorities: [
+        { title: 'Set a non-negotiable wind-down', desc: 'A 20-minute routine that travels with you. Examples: meditation, reading, crossword puzzles.' },
+        { title: 'Stop caffeine at 2pm local time', desc: 'Doesn\'t matter what time zone you arrived from. It\'s all linked to cortisol. Just don\'t do it.' },
+        { title: 'Treat the first 3 days in a new city as recovery, not push', desc: 'Reduce intensity, sleep more, walk a lot. Your body is very stressed from the travel — so don\'t make it worse.' }
+      ]
+    },
+    almostThere: {
+      name: 'The <em>Almost-There</em> Nomad',
+      tagline: "Nothing's broken. Nothing's compounding either. You're maintaining — and you can feel it.",
+      diagnosis: [
+        "Your scores are mostly in the 5–7 range across the board. No glaring weakness. No emergency. But also: no momentum. You're doing enough to not lose ground, and not quite enough to gain any. This is the most frustrating place to be, because there's no obvious villain to point at.",
+        "What you don't need is more information. You already know what to do. What you need is *structure that turns knowledge into compounding*. The difference between a 6/10 routine and an 8/10 routine isn't more discipline — it's better feedback loops. Someone reviewing your week. A reason to show up that's bigger than your own willpower. A small group moving in the same direction. That's the multiplier."
+      ],
+      priorities: [
+        { title: 'Pick one pillar to push above 8/10', desc: 'Not all five. One. The biggest gains come from concentrating effort, not spreading it thin. Look at your scores — which pillar would unlock the most if it went from "fine" to "dialed"?' },
+        { title: 'Add a weekly review you can\'t skip', desc: 'A 10-minute audit of your week. Not a journal — a scorecard. What was your protein floor? Workouts? Sleep average? Tracking is the cheapest performance-enhancer in fitness.' },
+        { title: 'Find one accountability layer outside yourself', desc: 'A coach, a small group, a friend who actually checks. Self-accountability is what got you to 6/10. External structure is what gets you to 8.' }
+      ]
+    },
+    resetReady: {
+      name: 'The Full <em>Reset-Ready</em> Nomad',
+      tagline: "Multiple pillars are running on fumes. The good news: this is the highest-leverage starting point of all.",
+      diagnosis: [
+        "Multiple pillars scored under 4. Your honesty in answering this is the first sign that you're ready to actually do something about it — because most people in your position know what they need to do and don't want to hear it. The travel life has slowly chipped away at the basics, and you've reached the point where it's not one thing that needs fixing, it's everything.",
+        "The good news: this is the best place to start from. When the foundation hasn't been built, small changes make quick results. A protein goal, a wind-down routine, a non-negotiable movement goal — you can transform how you feel within 4 weeks. And it's not a complete life overhaul. It's done step by step. One pillar at a time, in the right order, with someone who's done this on the road and knows where to focus first."
+      ],
+      priorities: [
+        { title: 'Start with sleep — everything else depends on it', desc: 'You can\'t build any other pillar on broken sleep. Find a wind-down routine, stop drinking caffeine after 2pm, and find your recovery window after travel days.' },
+        { title: 'Add a single protein anchor', desc: 'One meal a day that\'s high in protein and stays the same no matter where you are. Usually it\'s breakfast. For example: yogurt bowls, or 3 hard-boiled eggs with toast.' },
+        { title: 'Define your weekly minimum movement', desc: 'For example: two 30-min strength sessions a week, 7k steps a day, and one 30-min bike ride. It needs to be something you have fun doing so it feels effortless to keep going.' }
+      ]
+    }
+  };
+
+  // ============ STATE ============
+  let currentQ = 0;
+  let answers = new Array(questions.length).fill(null);
+
+  // ============ RENDER ============
+  function startQuiz() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('quiz').classList.add('active');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('progressPillar').textContent = q.pillar;
+    document.getElementById('progressCount').textContent =
+      String(currentQ + 1).padStart(2, '0') + ' / ' + String(questions.length).padStart(2, '0');
+    document.getElementById('progressFill').style.width = ((currentQ + 1) / questions.length * 100) + '%';
+    document.getElementById('questionNumber').textContent = 'Question ' + String(currentQ + 1).padStart(2, '0');
+    document.getElementById('questionText').textContent = q.text;
+
+    const area = document.getElementById('answerArea');
+    area.innerHTML = '';
+
+    if (q.type === 'choice') {
+      const opts = document.createElement('div');
+      opts.className = 'options';
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        if (answers[currentQ] && answers[currentQ].index === idx) btn.classList.add('selected');
+        btn.innerHTML = '<span class="option-marker"></span><span>' + opt.label + '</span>';
+        btn.onclick = () => selectChoice(idx);
+        opts.appendChild(btn);
+      });
+      area.appendChild(opts);
+    } else if (q.type === 'scale') {
+      const scale = document.createElement('div');
+      scale.className = 'scale';
+      const labels = document.createElement('div');
+      labels.className = 'scale-labels';
+      labels.innerHTML = '<span>1 — ' + q.leftLabel + '</span><span>' + q.rightLabel + ' — 10</span>';
+      scale.appendChild(labels);
+
+      const btns = document.createElement('div');
+      btns.className = 'scale-buttons';
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'scale-btn';
+        btn.textContent = i;
+        if (answers[currentQ] && answers[currentQ].score === i) btn.classList.add('selected');
+        btn.onclick = () => selectScale(i);
+        btns.appendChild(btn);
+      }
+      scale.appendChild(btns);
+      area.appendChild(scale);
+    }
+
+    document.getElementById('backBtn').disabled = currentQ === 0;
+    updateNext();
+  }
+
+  function selectChoice(idx) {
+    const q = questions[currentQ];
+    const opt = q.options[idx];
+    answers[currentQ] = { index: idx, score: opt.score, value: opt.value, pillar: q.pillar, qualifier: q.qualifier };
+    document.querySelectorAll('.option').forEach((el, i) => {
+      el.classList.toggle('selected', i === idx);
+    });
+    updateNext();
+  }
+
+  function selectScale(num) {
+    const q = questions[currentQ];
+    answers[currentQ] = { score: num, pillar: q.pillar };
+    document.querySelectorAll('.scale-btn').forEach((el, i) => {
+      el.classList.toggle('selected', i === num - 1);
+    });
+    updateNext();
+  }
+
+  function updateNext() {
+    const btn = document.getElementById('nextBtn');
+    if (answers[currentQ] !== null) {
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      btn.innerHTML = currentQ === questions.length - 1
+        ? 'See My Results <span class="arrow">→</span>'
+        : 'Next <span class="arrow">→</span>';
+    } else {
+      btn.style.opacity = '0.4';
+      btn.style.pointerEvents = 'none';
+    }
+  }
+
+  function goNext() {
+    if (answers[currentQ] === null) return;
+    if (currentQ === questions.length - 1) {
+      document.getElementById('quiz').classList.remove('active');
+      document.getElementById('capture').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      currentQ++;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function goBack() {
+    if (currentQ > 0) {
+      currentQ--;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function submitCapture() {
+    const name = document.getElementById('firstName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email so I can send your results.');
+      return;
+    }
+    // In production this would POST to your email service
+    console.log('Lead captured:', { name, email, answers });
+    showResults();
+  }
+
+  function showResults() {
+    document.getElementById('capture').classList.remove('active');
+    document.getElementById('result').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Calculate pillar scores
+    const pillars = ['Steps', 'Sleep', 'Protein', 'Water', 'Movement'];
+    const scores = {};
+    pillars.forEach(p => {
+      const pillarAnswers = answers.filter(a => a && a.pillar === p);
+      const total = pillarAnswers.reduce((sum, a) => sum + a.score, 0);
+      scores[p] = pillarAnswers.length > 0 ? (total / pillarAnswers.length).toFixed(1) : 0;
+    });
+
+    // Determine archetype
+    const arche = determineArchetype(scores);
+    const a = archetypes[arche];
+
+    document.getElementById('archetypeName').innerHTML = a.name;
+    document.getElementById('archetypeTagline').textContent = a.tagline;
+
+    // Render scores
+    const grid = document.getElementById('scoresGrid');
+    pillars.forEach(p => {
+      const cell = document.createElement('div');
+      cell.className = 'score-cell';
+      const pct = (scores[p] / 10) * 100;
+      cell.innerHTML = `
+        <div class="score-label">${p}</div>
+        <div class="score-value">${scores[p]}<span class="denom">/10</span></div>
+        <div class="score-bar"><div class="score-bar-fill" style="width: ${pct}%"></div></div>
+      `;
+      grid.appendChild(cell);
+    });
+
+    // Diagnosis paragraphs
+    const dxEl = document.getElementById('diagnosisText');
+    a.diagnosis.forEach(p => {
+      const para = document.createElement('p');
+      para.textContent = p;
+      dxEl.appendChild(para);
+    });
+
+    // Priorities
+    const prEl = document.getElementById('prioritiesList');
+    a.priorities.forEach((p, i) => {
+      const item = document.createElement('div');
+      item.className = 'priority-item';
+      item.innerHTML = `
+        <div class="priority-num">No. ${String(i + 1).padStart(2, '0')}</div>
+        <div class="priority-title">${p.title}</div>
+        <div class="priority-desc">${p.desc}</div>
+      `;
+      prEl.appendChild(item);
+    });
+
+    // Closing note (pure value, no pitch)
+    document.getElementById('closingText').textContent =
+      "This audit isn't a diagnosis you have to do anything with. Take it, sit with it, see what feels true. The five nonnegotiables aren't a program — they're the floor underneath every program. Whether you build from here on your own or with someone, the floor is the same. Start with the first move on the list. Just that. That's how this works.";
+  }
+
+  function determineArchetype(scores) {
+    const s = Object.fromEntries(Object.entries(scores).map(([k, v]) => [k, parseFloat(v)]));
+    const values = Object.values(s);
+    const lowest = Math.min(...values);
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+    const lowCount = values.filter(v => v < 4).length;
+
+    // Reset-ready: multiple pillars under 4
+    if (lowCount >= 2) return 'resetReady';
+
+    // Wired and tired: sleep is the weakest by a clear margin
+    if (s.Sleep === lowest && s.Sleep < 5 && avg > 4) return 'wired';
+
+    // Under-fueled: protein + water are the two lowest
+    const sorted = Object.entries(s).sort((a, b) => a[1] - b[1]);
+    const twoLowest = [sorted[0][0], sorted[1][0]];
+    if (twoLowest.includes('Protein') && twoLowest.includes('Water')) return 'underFueled';
+
+    // Inconsistent mover: movement + steps are the two lowest
+    if (twoLowest.includes('Movement') && twoLowest.includes('Steps')) return 'inconsistent';
+
+    // Default — Almost There
+    return 'almostThere';
+  }
+</script>
+
+</body>
+</html>
